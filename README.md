@@ -206,7 +206,3 @@ MIT
 [coc-badge]: https://img.shields.io/badge/code%20of-conduct-ff69b4.svg?style=flat-square
 [coc]: https://kentcdodds.com/conduct
 <!-- prettier-ignore-end -->
-
-```
-
-```
