@@ -113,7 +113,7 @@ const creature = { name: 'Dragon', type: 'Fire' }
 invariant(creature.name === 'Dragon', 'Creature must be a Dragon')
 ```
 
-**Throwing a Response on False Condition**
+**Throwing an Error on False Condition**
 
 ```ts
 import { invariant } from '@epic-web/invariant'
@@ -126,7 +126,7 @@ invariant(creature.type === 'Fire', 'Creature must be of type Fire')
 **Using Callback for Error Message**
 
 ```ts
-import { invariantResponse } from '@epic-web/invariant'
+import { invariant } from '@epic-web/invariant'
 
 const creature = { name: 'Elf', type: 'Forest' }
 invariant(creature.type === 'Water', () => 'Creature must be of type Water')
