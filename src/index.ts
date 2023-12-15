@@ -60,3 +60,29 @@ export function invariantResponse(
 		})
 	}
 }
+
+/**
+ * invariantResponse alias with defaults for convenience and to avoid boilerplate
+ *
+ * @examples
+ * invariantJsonResponse(typeof value === 'string', 'value must be a string')
+ * invariantJsonResponse(typeof value === 'string', 'value must be a string', 500)
+ *
+ * @param condition The condition to check
+ * @param message The message to throw
+ * @param status optional status code if different from 400
+ *
+ * @throws {Response} if condition is falsey
+ */
+export function invariantJsonResponse(
+	condition: any,
+	message: string,
+	status?: number,
+): asserts condition {
+	return invariantResponse(condition, JSON.stringify({ error: message }), {
+		status: status || 400,
+		headers: {
+			'Content-Type': 'text/json',
+		},
+	})
+}
