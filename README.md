@@ -186,6 +186,38 @@ invariantResponse(
 )
 ```
 
+### `invariantJsonResponse`
+
+The `invariantJsonResponse` function is just an `invariantResponse` wrapper
+that doesn't accept a callback for the error message, just a plain string, and
+serializes it into a JSON object, throwing a `Response` with JSON content type
+and `400` status code, allowing us to reduce boilerplate for this particular
+case.
+
+**Basic Usage**
+
+```ts
+import { invariantJsonResponse } from '@epic-web/invariant'
+
+const value = 'someString'
+invariantResponse(typeof value === 'string', `'value' must be a string`)
+```
+
+Response received in case of false condition will have JSON body like this:
+```json
+{
+  "error": "'value' must be a string"
+}
+```
+
+**Throwing response with status different from default `400`**
+
+Optionally, you can pass a third numeric parameter to change the status code. Since the idea is to simplify the checking, this alias doesn't accepts full `Response` options, just a numeric status code.
+
+```ts
+invariantResponse(typeof value === 'string', `'value' must be a string`, 500)
+```
+
 ## Differences from [invariant](https://www.npmjs.com/package/invariant)
 
 There are three main differences. With `@epic-web/invariant`:
@@ -194,6 +226,8 @@ There are three main differences. With `@epic-web/invariant`:
 2. It's typesafe
 3. We support the common case (for Remix anyway) of throwing Responses as well
    with `invariantResponse`.
+4. Also for Remix, has convenience function `invariantJsonResponse` that throws
+   a Response with JSON content type.
 
 ## License
 
