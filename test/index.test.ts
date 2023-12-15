@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert'
-import { invariant, invariantResponse } from '../src'
+import { invariant, invariantResponse, invariantJsonResponse } from '../src'
 
 test('invariant should not throw an error for a true condition', () => {
 	const creature = { name: 'Dragon', type: 'Fire' }
@@ -81,5 +81,37 @@ test('invariantResponse should throw a Response with additional responseInit opt
 			error: 'Creature must be of type Sky',
 		})
 		assert.strictEqual(error.headers.get('Content-Type'), 'text/json')
+	}
+})
+
+test('invariantJsonResponse should not throw a Response for a true condition', () => {
+	assert.doesNotThrow(() => {
+		invariantJsonResponse(true, 'Falsy value')
+	})
+})
+
+test('invariantJsonResponse should throw a Response for a false condition with JSON content type', async () => {
+	const errorMessage = 'Falsy value'
+	try {
+		invariantJsonResponse(false, errorMessage)
+	} catch (error: unknown) {
+		invariant(error instanceof Response, 'Expected to throw a Response')
+		assert.strictEqual(error.status, 400)
+		assert.strictEqual(
+			JSON.stringify(await error.json()),
+			JSON.stringify({
+				error: errorMessage,
+			}),
+		)
+		assert.strictEqual(error.headers.get('content-type'), 'text/json')
+	}
+})
+
+test('invariantJsonResponse can throw a Response with status different from 400', async () => {
+	try {
+		invariantJsonResponse(false, 'Error message', 500)
+	} catch (error: unknown) {
+		invariant(error instanceof Response, 'Expected to throw a Response')
+		assert.strictEqual(error.status, 500)
 	}
 })
