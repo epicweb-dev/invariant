@@ -34,8 +34,6 @@ export function invariant(
  * Provide a condition and if that condition is falsey, this throws a 400
  * Response with the given message.
  *
- * inspired by invariant from 'tiny-invariant'
- *
  * @example
  * const creature = { name: 'Cerberus', type: 'Underworld' }
  * invariantResponse(
