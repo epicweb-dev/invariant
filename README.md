@@ -93,9 +93,10 @@ const name = await formData.get('name')
 
 It's pretty simple. But honestly, it's nicer to read, it throws a special
 `InvariantError` object to distinguish it from other types of errors, and we
-have another useful utility for throwing `Response` objects instead of `Error`
-objects which is handy
-[in Remix](https://remix.run/docs/en/main/route/loader#throwing-responses-in-loaders).
+have another useful utility for throwing
+[`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) objects
+instead of `Error` objects which is handy [in
+Remix](https://remix.run/docs/en/main/route/loader#throwing-responses-in-loaders).
 
 ## Usage
 
