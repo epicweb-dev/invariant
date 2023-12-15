@@ -37,7 +37,12 @@ export function invariant(
  * inspired by invariant from 'tiny-invariant'
  *
  * @example
- * invariantResponse(typeof value === 'string', `value must be a string`)
+ * const creature = { name: 'Cerberus', type: 'Underworld' }
+ * invariantResponse(
+ *  creature.type === 'Sky',
+ *  JSON.stringify({ error: 'Creature must be of type Sky' }),
+ *  { status: 500, headers: { 'Content-Type': 'text/json' } },
+ * )
  *
  * @param condition The condition to check
  * @param message The message to throw (or a callback to generate the message)
