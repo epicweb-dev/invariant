@@ -16,7 +16,6 @@ export class InvariantError extends Error {
  *
  * @param condition The condition to check
  * @param message The message to throw (or a callback to generate the message)
- * @param responseInit Additional response init options if a response is thrown
  *
  * @throws {InvariantError} if condition is falsey
  */
