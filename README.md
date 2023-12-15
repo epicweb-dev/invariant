@@ -137,7 +137,7 @@ invariant(creature.type === 'Water', () => 'Creature must be of type Water')
 ### `invariantResponse`
 
 The `invariantResponse` function works similarly to `invariant`, but instead of
-throwing an `InvariantError`, it throws a Response object.
+throwing an `InvariantError`, it throws a `Response` object.
 
 **Basic Usage**
 
@@ -148,7 +148,7 @@ const creature = { name: 'Phoenix', type: 'Fire' }
 invariantResponse(creature.type === 'Fire', 'Creature must be of type Fire')
 ```
 
-**Throwing a Response on False Condition**
+**Throwing a `Response` on False Condition**
 
 ```ts
 import { invariantResponse } from '@epic-web/invariant'
@@ -161,7 +161,7 @@ invariantResponse(creature.type === 'Water', 'Creature must be of type Water')
 The response status default if 400 (Bad Request), but you'll find how to change
 that below.
 
-**Using Callback for Response Message**
+**Using Callback for `Response` Message**
 
 ```ts
 import { invariantResponse } from '@epic-web/invariant'
@@ -173,7 +173,7 @@ invariantResponse(
 )
 ```
 
-**Throwing a Response with Additional Options**
+**Throwing a `Response` with Additional Options**
 
 ```ts
 import { invariantResponse } from '@epic-web/invariant'
