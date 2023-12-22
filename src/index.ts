@@ -21,7 +21,7 @@ export class InvariantError extends Error {
  * @throws {InvariantError} if condition is falsey
  */
 export function invariant(
-	condition: any,
+	condition: unknown,
 	message: string | (() => string),
 ): asserts condition {
 	if (!condition) {
@@ -47,7 +47,7 @@ export function invariant(
  * @throws {Response} if condition is falsey
  */
 export function invariantResponse(
-	condition: any,
+	condition: unknown,
 	message: string | (() => string),
 	responseInit?: ResponseInit,
 ): asserts condition {
