@@ -181,7 +181,7 @@ const creature = { name: 'Cerberus', type: 'Underworld' }
 invariantResponse(
 	creature.type === 'Sky',
 	JSON.stringify({ error: 'Creature must be of type Sky' }),
-	{ status: 500, headers: { 'Content-Type': 'text/json' } },
+	{ status: 500, headers: { 'Content-Type': 'application/json' } },
 )
 ```
 
